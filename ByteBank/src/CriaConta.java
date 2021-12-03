@@ -3,8 +3,8 @@ public class CriaConta {
 
 	public static void main(String[] args) {
 		Conta primeiraConta = new Conta();   //
-		/* do lado direiro de new consta o nome da classe que voce quer "tirar do papel" ou seja, criar o objeto do tipo 
-		 * Conta. Aqui ocorre o Instanciamento */
+		/* do lado direiro de new consta o nome da CLASSE (Conta) que voce quer "tirar do papel"
+		 *  ou seja, criar o objeto do tipo Conta. Aqui ocorre o Instanciamento */
 		
 		primeiraConta.saldo = 200; //Atribuição de um atributo
 		System.out.println(primeiraConta.saldo); //Acesso de um atributo de um objeto
