@@ -1,4 +1,4 @@
-package exercicios;
+
 
 import java.util.Scanner;
 
@@ -17,7 +17,7 @@ public class PerimetroArea {
 		areaCirculo = 3.14159 * raio * raio;
 		
 		System.out.printf("O perímetro é de %.2f e a área é de %.2f ", perimetro, areaCirculo);
-		
+		entrada.close();
 	}
 
 }

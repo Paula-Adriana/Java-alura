@@ -1,4 +1,4 @@
-package exercicios;
+
 
 /* Número primo é aquele que só é divisível por ele mesmo e pela unidade. Fazer um algoritmo que determine e escreva os
  * números primos compreendidos entre um intervalo fornecido pelo usuário.*/
