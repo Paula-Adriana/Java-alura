@@ -33,4 +33,12 @@ public class ContaCorrente extends Conta {
 	 * sobrescrever, ou reescrever, o método, isso é expressado pela palavra
 	 * override.
 	 */
+	
+	
+	
+	
+	@Override
+	public void deposita(double valor) {
+		super.saldo += valor;	
+	}
 }

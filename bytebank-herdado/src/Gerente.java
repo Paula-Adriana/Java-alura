@@ -17,7 +17,7 @@ public class Gerente extends Funcionario {
 
 	public double getBonificacao() {
 		System.out.println("Chamando o método de bonificacao do Gerente");
-		return super.getBonificacao() + super.getSalario(); /*
+		return super.getSalario(); /*
 									 * O this, além de guardar a referência para mexermos nos atributos do objeto,
 									 * para o desenvolvedor, significa que o atributo deve estar definido nesta
 									 * classe. Entretanto, neste caso o salário não está definido na classe Gerente,
