@@ -64,7 +64,7 @@ public class TesteReferencia {
 		// Chamando o método de bonificacao do EV
 		//Chamando o método de bonificação do Designer
 		/*
-		 * As tres mensagens foram impressas, o que significa que, para um destes tipos
+		 * As tres mensagens foram impressas, o que significa que, para cada um destes tipos
 		 * de Funcionario foi utilizado o método getBonificacao() específico de sua
 		 * respectiva classe. Ao executarmos o código, sempre será chamado o método
 		 * específico, é esta a real vantagem do polimorfismo.

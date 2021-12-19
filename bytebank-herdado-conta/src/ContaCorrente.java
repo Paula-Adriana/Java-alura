@@ -1,6 +1,6 @@
 
 //new ContaCorrente()
-public class ContaCorrente extends Conta {
+public class ContaCorrente extends Conta implements Tributavel {
 
 	public ContaCorrente(int agencia, int numero) {
 		super(agencia, numero);
@@ -33,12 +33,15 @@ public class ContaCorrente extends Conta {
 	 * sobrescrever, ou reescrever, o método, isso é expressado pela palavra
 	 * override.
 	 */
-	
-	
-	
-	
+
 	@Override
 	public void deposita(double valor) {
 		super.saldo += valor;	
+	}
+
+	@Override
+	public double getValorImposto() {
+		return super.saldo * 0.01;
+		
 	}
 }

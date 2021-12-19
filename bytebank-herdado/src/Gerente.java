@@ -1,20 +1,13 @@
-//Gerente herda todos os atributos da classe funcionario. 
-public class Gerente extends Funcionario {
+//Gerente herda todos os atributos da classe funcionario. Assina o autenticavel. 
+//Nao existe herança multipla no java, pode estender somente uma clase.
+//mas pode-se assinar varios contratos (interface.) 
+public class Gerente extends Funcionario implements Autenticavel {
 
-	private int senha;
+	private AutenticacaoUtil autenticador;
 
-	public void setSenha(int senha) {
-		this.senha = senha;
+	public Gerente() {
+		this.autenticador = new AutenticacaoUtil();
 	}
-
-	public boolean autentica(int senha) {
-		if (this.senha == senha) {
-			return true;
-		}
-		return false;
-
-	}
-
 	public double getBonificacao() {
 		System.out.println("Chamando o método de bonificacao do Gerente");
 		return super.getSalario(); /*
@@ -41,9 +34,14 @@ public class Gerente extends Funcionario {
 									 */
 	}
 
+	@Override
+	public void setSenha(int senha) {
+		this.autenticador.setSenha(senha);
+
+	}
+
+	@Override
+	public boolean autentica(int senha) {
+		return this.autenticador.autentica(senha);
+	}
 }
-/*
- * Classe funcionario: Super class Base class Classe mãe
- * 
- * Classe gerente: Classe filho/a
- */
