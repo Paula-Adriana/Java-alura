@@ -14,29 +14,23 @@ public abstract class Conta {
 
 	public abstract void deposita(double valor);
 
-	public boolean saca(double valor) {
-		if (this.saldo >= valor) {
-			this.saldo -= valor;
-			return true;
-		} else {
-			return false;
+	// Refatorado
+	public void saca(double valor) throws SaldoInsuficienteException {
+		if (this.saldo < valor) { // Comum colocar os if de problemas com as exceções logo no inicio do metodo
+			throw new SaldoInsuficienteException("Saldo: " + this.saldo + ", Valor: " + valor);
 		}
+		this.saldo -= valor;
 	}
 
-	public boolean transfere(double valor,
-			Conta destino) { /*
+	public void transfere(double valor, Conta destino) throws SaldoInsuficienteException { /*
 								 * Recebemos como parâmetro a Conta, ou seja, o tipo genérico, não sabemos ainda
 								 * se é uma conta corrente, ou conta poupança. Este código funciona por causa do
 								 * polimorfismo, temos a referência do tipo genérico, que pode apontar para
 								 * qualquer um mais específico, no caso, tanto ContaCorrente, quanto
 								 * ContaPoupanca.
 								 */
-		if (this.saca(valor)) {
-			destino.deposita(valor);
-			return true;
-		} else {
-			return false;
-		}
+		this.saca(valor);
+		destino.deposita(valor);
 	}
 
 	public double getSaldo() {
