@@ -91,5 +91,9 @@ public abstract class Conta {
 	public static int getTotal() {
 		return total;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Número: " + this.numero + ", Agência: " + this.agencia;
+	}
 }
