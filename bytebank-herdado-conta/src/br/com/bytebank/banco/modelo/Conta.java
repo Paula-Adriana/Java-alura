@@ -1,6 +1,8 @@
 package br.com.bytebank.banco.modelo;
+
 /**
  * Classe representa a moldura de uma conta.
+ * 
  * @author Paula
  *
  */
@@ -11,7 +13,7 @@ public abstract class Conta {
 	private int numero;
 	private Cliente titular;
 	private static int total;
-	
+
 	/**
 	 * Construtor para inicializar o objeto Conta
 	 * 
@@ -41,13 +43,14 @@ public abstract class Conta {
 		this.saldo -= valor;
 	}
 
-	public void transfere(double valor, Conta destino) throws SaldoInsuficienteException { /*
-								 * Recebemos como parâmetro a Conta, ou seja, o tipo genérico, não sabemos ainda
-								 * se é uma conta corrente, ou conta poupança. Este código funciona por causa do
-								 * polimorfismo, temos a referência do tipo genérico, que pode apontar para
-								 * qualquer um mais específico, no caso, tanto ContaCorrente, quanto
-								 * ContaPoupanca.
-								 */
+	public void transfere(double valor, Conta destino)
+			throws SaldoInsuficienteException { /*
+												 * Recebemos como parâmetro a Conta, ou seja, o tipo genérico, não
+												 * sabemos ainda se é uma conta corrente, ou conta poupança. Este código
+												 * funciona por causa do polimorfismo, temos a referência do tipo
+												 * genérico, que pode apontar para qualquer um mais específico, no caso,
+												 * tanto ContaCorrente, quanto ContaPoupanca.
+												 */
 		this.saca(valor);
 		destino.deposita(valor);
 	}
@@ -91,7 +94,28 @@ public abstract class Conta {
 	public static int getTotal() {
 		return total;
 	}
-	
+
+	@Override // estamos sobrescrevendo o método equals(), da classe Object.(pacote lang)
+	// Por padrão, o método equals() faz algo que não queremos, que é comparar as
+	// referências this e obj.
+	public boolean equals(Object ref) {
+		// Na classe Object notamos que o método recebe um Object, ou seja, um tipo
+		// genérico. Portanto, retornando à classe Conta, vemos que o método também
+		// deveria receber algo da mesma natureza, no caso, o próprio Object e uma
+		// referência ref. No entanto, este tipo ref não possui atributos que se chamam
+		// agencia ou numero. Assim, transformaremos a referência genérica em uma
+		// específica, como sabemos, utilizamos o cast:
+		Conta outra = (Conta) ref;
+
+		if (this.agencia != outra.agencia) {
+			return false;
+		}
+		if (this.numero != outra.numero) {
+			return false;
+		}
+		return true;
+	}
+
 	@Override
 	public String toString() {
 		return "Número: " + this.numero + ", Agência: " + this.agencia;
