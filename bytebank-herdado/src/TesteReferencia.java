@@ -52,13 +52,10 @@ public class TesteReferencia {
 		Funcionario ev = new EditorVideo();
 		ev.setSalario(2500.0);
 		
-		Funcionario d = new Designer();
-		d.setSalario(2000);
-
-		ControleBonificacao controle = new ControleBonificacao();
+				ControleBonificacao controle = new ControleBonificacao();
 		controle.registra(g1);
 		controle.registra(ev);
-		controle.registra(d);
+		
 		
 		// Chamando o método de bonificacao do Gerente
 		// Chamando o método de bonificacao do EV
