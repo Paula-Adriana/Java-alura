@@ -7,7 +7,9 @@ package br.com.bytebank.banco.modelo;
  *
  */
 
-public abstract class Conta {
+public abstract class Conta extends Object implements Comparable<Conta> {
+	// Assim, nossa conta se torna comparável. Como vimos, há também a presença de
+	// generics, uma vez que queremos comparar uma Conta a outra Conta
 	protected double saldo;
 	private int agencia;
 	private int numero;
@@ -118,6 +120,19 @@ public abstract class Conta {
 
 	@Override
 	public String toString() {
-		return "Número: " + this.numero + ", Agência: " + this.agencia;
+		return "Número: " + this.numero + ", Agência: " + this.agencia + ", Saldo: " + this.saldo;
+	}
+
+	@Override
+	public int compareTo(Conta outra) {
+		// Similar ao método compare(), já que seu retorno é um inteiro, e nos
+		// devolve 0, caso as contas sejam iguais. Também terá um número positivo, se a
+		// primeira conta for maior, e negativo, se ela for menor que a segunda.Em
+		// seguida, adaptaremos o método, para que realize a comparação com base no
+		// saldo. Utilizaremos a classe wrapper Double, e teremos como parâmetro os dois
+		// valores dos saldos, this.saldo e outra.saldo, representando o saldo desta
+		// conta, e da outra conta
+				
+		return Double.compare(this.saldo, outra.saldo);
 	}
 }
