@@ -17,7 +17,7 @@ public class TesteLeitura {
 		 * 
 		 */
 
-		Reader isr = new InputStreamReader(fis);
+		Reader isr = new InputStreamReader(fis, "UTF-8");
 		BufferedReader br = new BufferedReader(isr);
 		/*
 		 * Reader é uma classe (abstrata) que possui dois filhos concretos a
