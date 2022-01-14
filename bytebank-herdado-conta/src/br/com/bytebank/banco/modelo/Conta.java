@@ -1,5 +1,7 @@
 package br.com.bytebank.banco.modelo;
 
+import java.io.Serializable;
+
 /**
  * Classe representa a moldura de uma conta.
  * 
@@ -7,13 +9,15 @@ package br.com.bytebank.banco.modelo;
  *
  */
 
-public abstract class Conta extends Object implements Comparable<Conta> {
+public abstract class Conta extends Object implements Comparable<Conta>, Serializable {
 	// Assim, nossa conta se torna comparável. Como vimos, há também a presença de
 	// generics, uma vez que queremos comparar uma Conta a outra Conta
 	protected double saldo;
 	private int agencia;
 	private int numero;
-	private Cliente titular;
+	private transient Cliente titular;
+	// transient É uma palavra chave do mundo Java, e significa que ele não faz
+	// parte da serialização, ou seja, não será gravado no objeto
 	private static int total;
 
 	/**
@@ -132,7 +136,7 @@ public abstract class Conta extends Object implements Comparable<Conta> {
 		// saldo. Utilizaremos a classe wrapper Double, e teremos como parâmetro os dois
 		// valores dos saldos, this.saldo e outra.saldo, representando o saldo desta
 		// conta, e da outra conta
-				
+
 		return Double.compare(this.saldo, outra.saldo);
 	}
 }

@@ -8,17 +8,17 @@ public class TesteEncoding {
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
 
-		String s = "ç";
-		// revela o codepoint de determinado caractere a partir de sua posição na string
+		String s = "Ã§";
+		// revela o codepoint de determinado caractere a partir de sua posiï¿½ï¿½o na string
 		System.out.println(s.codePointAt(0));
 
-		// método estático para retornar uma referência com o charset default
+		// mï¿½todo estï¿½tico para retornar uma referï¿½ncia com o charset default
 		Charset charset = Charset.defaultCharset();
 		System.out.println(charset.displayName());
 
-		// método para transformar os caracteres em bytes
-		// Existem também duas sobrecargas para esse método (getBytes), onde você pode informar o
-		// charset que deseja utilizar para a transformação.
+		// mï¿½todo para transformar os caracteres em bytes
+		// Existem tambï¿½m duas sobrecargas para esse mï¿½todo (getBytes), onde vocï¿½ pode informar o
+		// charset que deseja utilizar para a transformaï¿½ï¿½o.
 		byte[] bytes = s.getBytes("windows-1252");
 		System.out.print(bytes.length + ", windows-1252, ");
 		String sNovo = new String(bytes, "windows-1252");
