@@ -1,4 +1,4 @@
-package br.com.tdd;
+package br.com.testeUnitario;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;

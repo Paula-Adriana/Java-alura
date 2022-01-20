@@ -1,4 +1,4 @@
-package br.com.tdd;
+package br.com.testeUnitario;
 
 public class Calculadora {
 
