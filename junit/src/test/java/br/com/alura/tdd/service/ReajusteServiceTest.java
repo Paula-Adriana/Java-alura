@@ -5,6 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import br.com.alura.tdd.modelo.Desempenho;
@@ -17,11 +21,24 @@ public class ReajusteServiceTest {
 	 * Desempenho bom - 15% do salário Desempenho ótimo - 20% do salário.
 	 */
 
+	private ReajusteService service;
+	private Funcionario func;
+	
+	@BeforeAll //antes de executar os métodos, o JUnit vai chamar esse daqui
+	public static void antesdeTudo() {
+		System.out.println("Antes de Tudo");
+	}
+	
+	@BeforeEach // @BeforeEach é chamado antes de cada um dos três métodos 
+	public void inicializar() {
+		System.out.println("Iniciando");
+		this.service = new ReajusteService();
+		this.func = new Funcionario("Joao", LocalDate.now(), new BigDecimal(1000.00));
+	}
+
 	// Começo com tdd: Implementar os cenários de teste
 	@Test
 	public void reajusteDeveriaSerTresPorcentoQuandoDesempenhoForADesejar() {
-		ReajusteService service = new ReajusteService(); // classe ainda nao existe.
-		Funcionario func = new Funcionario("Joao", LocalDate.now(), new BigDecimal(1000.00));
 		service.concederReajuste(func, Desempenho.A_Desejar); // O service precisa puxar o metodo que vai conceder o
 																// reajuste mas esse metodo ainda nao existe. Colocar um
 																// nome qq e depois criar a classe (atraves dos atalhos
@@ -33,25 +50,38 @@ public class ReajusteServiceTest {
 		assertEquals(new BigDecimal("1030.00"), func.getSalario());
 
 	}
-	//Com a lógica, classes e métodos prontos só copiar os testes e adaptar o enum e valor do reajuste esperado.
+
+	// Com a lógica, classes e métodos prontos só copiar os testes e adaptar o enum
+	// e valor do reajuste esperado.
 	@Test
 	public void reajusteDeveriaSerQuinzePorcentoQuandoDesempenhoForBom() {
-		ReajusteService service = new ReajusteService();
-		Funcionario func = new Funcionario("José", LocalDate.now(), new BigDecimal(1000.00));
 		service.concederReajuste(func, Desempenho.BOM);
 		assertEquals(new BigDecimal("1150.00"), func.getSalario());
 	}
-	
+
 	@Test
 	public void reajusteDeveriaSerVintePorcentoQuandoDesempenhoForOtimo() {
-		ReajusteService service = new ReajusteService();
-		Funcionario func = new Funcionario("Juvenal", LocalDate.now(), new BigDecimal(1000.00));
 		service.concederReajuste(func, Desempenho.OTIMO);
 		assertEquals(new BigDecimal("1200.00"), func.getSalario());
-		
-		
 
 	}
 	
+	@AfterEach //@AfterEach é chamado após cada um dos métodos de teste ser finalizado.
+	public void finalizar() {
+		System.out.println("Finalizando");
+	}
 	
+	@AfterAll // após executar todos os métodos, o JUnit vai chamar esse daqui
+	public static void depoisdeTudo() {
+		System.out.println("Depois de Tudo");
+	}
+/* As anotações:
+Antes de Tudo
+Iniciando
+Finalizando
+Iniciando
+Finalizando
+Iniciando
+Finalizando
+Depois de Tudo*/
 }
