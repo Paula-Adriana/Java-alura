@@ -1,4 +1,4 @@
-package br.com.alura;
+package br.com.alura.testes;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,11 +9,11 @@ public class TestaDiferençaListESet {
 	public static void main(String[] args) {
 
 		//Collection<Integer> numeros = new ArrayList<Integer>();
-		 Collection<Integer> numeros = new HashSet<>();
+		Collection<Integer> numeros = new HashSet<>();
 
 		long inicio = System.currentTimeMillis();
 
-		for (int i = 1; i <= 50000; i++) {
+		for (int i = 1; i <= 100000; i++) {
 			numeros.add(i);
 		}
 
