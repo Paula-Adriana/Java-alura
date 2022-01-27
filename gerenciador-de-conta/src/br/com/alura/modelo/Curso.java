@@ -73,8 +73,9 @@ public class Curso {
 	}
 
 	public boolean estaMatriculado(Aluno aluno) {
-		return alunos.contains(aluno);
-
+	    return this.alunos.contains(aluno);//contains utiliza o equals
 	}
+	
+	
 
 }
