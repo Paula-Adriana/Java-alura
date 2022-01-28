@@ -1,9 +1,12 @@
 package br.com.alura.modelo;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class Curso {
@@ -11,7 +14,9 @@ public class Curso {
 	private String nome;
 	private String Instrutor;
 	private List<Aula> aulas = new LinkedList<Aula>();
-	private Set<Aluno> alunos = new HashSet<>();
+	private Set<Aluno> alunos = new HashSet<>(); // linkedHashSet (aparece na ordem que foi inserido mas tb nao tem como
+													// acessar com o get)
+	private Map<Integer, Aluno> matriculaParaAluno = new HashMap<>(); // relacionando o número de matricula com o aluno
 
 	public Curso(String nome, String instrutor) {
 		super();
@@ -63,7 +68,9 @@ public class Curso {
 
 	// metodo que encapsula o modo de matricula
 	public void matricula(Aluno aluno) {
-		this.alunos.add(aluno);
+		this.alunos.add(aluno); // matricula um aluno
+		this.matriculaParaAluno.put(aluno.getNumeroMatricula(), aluno); // associa esse aluno ao numero de matricula
+																		// dele
 	}
 
 	// Boa pratica! Quando alguem quiser a listagem dos alunos recebe uma copia pois
@@ -73,9 +80,14 @@ public class Curso {
 	}
 
 	public boolean estaMatriculado(Aluno aluno) {
-	    return this.alunos.contains(aluno);//contains utiliza o equals
+		return this.alunos.contains(aluno);// contains utiliza o equals
 	}
-	
-	
 
+	// Preciso descobrir se entre o set de alunos alguem tem o numero da matricula.
+	public Aluno buscaMatriculado(int numero) {
+		if (!matriculaParaAluno.containsKey(numero)) // se nao existir esse numero lançar excecao. Caso nao coloque, o
+														// map coloca null
+			throw new NoSuchElementException();
+		return matriculaParaAluno.get(numero);
+	}
 }

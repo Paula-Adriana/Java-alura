@@ -1,5 +1,8 @@
 package br.com.alura.testes;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import br.com.alura.modelo.Aluno;
 import br.com.alura.modelo.Aula;
 import br.com.alura.modelo.Curso;
@@ -119,10 +122,37 @@ public class TestaCursoComAluno {
 		// Considere a seguinte regra: caso você sobrescreva o método equals,
 		// obrigatoriamente deverá sobrescrever o método hashCode. Se equals é true
 		// obrigatoriamente o hashcode deve ser true. Pois se eles são iguais eles
-		//tem que ter o mesmo codigo de espalhamento o mesmo hashcode (mesmo grupo).
-		
+		// tem que ter o mesmo codigo de espalhamento o mesmo hashcode (mesmo grupo).
+
 		System.out.println(a1.hashCode() == jose.hashCode());
-		//true. 
+		// true.
+
+		// ==============================================================
+
+		/*
+		 * como se acessava os elementos de um Set antes do Java 5?
+		 * 
+		 * Iterator: objeto (antigo - antes de existir foreach e for) que todas as
+		 * coleções possuem (pois Iterable é a interface mãe de Collection), que serve
+		 * para iterar entre os elementos dentro da coleção, selecionando sempre o
+		 * próximo objeto da coleção
+		 */
+		Set<Aluno> alunos = javaColecoes.getAlunos();
+		Iterator<Aluno> iterador = alunos.iterator();
+
+		// Geralmente utilizado com um while. Iterator<T> tem poucos metodos, vamos usar
+		// aqui o hasNext() - que devolve um booleano dizendo se há ou não um próximo
+		// elemento na coleção. Então a primeira pergunta que sempre fazemos para o
+		// iterador é: "tem um próximo elemento na coleção?". Até porque se não houver
+		// um próximo elemento, não iremos querer pegá-lo. E o método é o next() - que
+		// justamente devolve o próximo elemento.
+		// A ordem na qual os elementos são devolvidos pelo Iterator depende da
+		// implementação da Collection utilizada.
+
+		while (iterador.hasNext()) {
+			Aluno proximo = iterador.next();
+			System.out.println(proximo);
+		}
 
 	}
 }
