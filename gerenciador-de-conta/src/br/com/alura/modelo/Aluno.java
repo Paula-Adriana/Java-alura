@@ -29,12 +29,11 @@ public class Aluno {
 	//============================EQUALS=======================================
 	@Override
 	public boolean equals(Object obj) {
-		// Definição do obj (quem será comparado) = outro. Será comparado com o this)
+		// Definição do obj (quem será comparado): outro. Esse "outro" é o que será comparado com o this)
 		Aluno outro = (Aluno) obj;
 
 		// Definição da igualdade! será igual quando?
-		// Aqui, quando tiver o mesmo nome. (cuidado nos casos em que o nome seja null,
-		// definir no construtor)
+		// Aqui, quando tiver o mesmo nome. (cuidado nos casos em que o nome seja null, definir no construtor)
 		return this.nome.equals(outro.nome);
 	}
 	
@@ -43,7 +42,8 @@ public class Aluno {
 	 * essa razão que as IDE's fornecem recursos que implementam esse método para
 	 * nós.
 	 * No Eclipse você pode pressionar CTRL + 3 e digitar equals. generate....
-	 * implementação sofisticada pelo desenvolvedor: 
+	 * 
+	 * Exemplo de uma implementação sofisticada pelo desenvolvedor: 
 	 * @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -72,14 +72,13 @@ public class Aluno {
 	// C,...;
 	// e José José tanto em a1 quanto em josé estarão no grupo J:
 	// obs: char é um tipo de int entao todos da letra A por exemplo ficarão no
-	// grupo
-	// 65 (tabela unicode 65 = a)
+	// grupo 65 (tabela unicode 65 = a)
 	public int hashCode() {
 		// return this.nome.charAt(0);
 		return this.nome.hashCode();// hashcode da classe string
 	}
 	
-	/*Implementação sofisticada do hashcode
+	/*Exemplo de implementação sofisticada do hashcode
 	 *@Override
     public int hashCode() {
         final int prime = 31;

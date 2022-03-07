@@ -8,8 +8,8 @@ public class TestaDiferençaListESet {
 
 	public static void main(String[] args) {
 
-		//Collection<Integer> numeros = new ArrayList<Integer>();
-		Collection<Integer> numeros = new HashSet<>();
+		Collection<Integer> numeros = new ArrayList<Integer>();
+		//Collection<Integer> numeros = new HashSet<>();
 
 		long inicio = System.currentTimeMillis();
 
