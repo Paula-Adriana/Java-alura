@@ -1,2 +1,2 @@
 # java_alura
-Exercícios de Java
+Exercícios referentes à formação Java e Orientação a objetos da Alura.
